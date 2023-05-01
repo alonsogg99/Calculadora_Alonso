@@ -15,6 +15,7 @@ namespace Calculadora_Alonso
             Console.WriteLine("2. Suma de matrices");
             Console.WriteLine("3. Resta de matrices");
             Console.WriteLine("4. Producto de dos matrices");
+            Console.WriteLine("5. Calculo de determinante de matriz de cualquier orden");
             Console.WriteLine("0. Cerrar aplicación");
 
             string read = (Console.ReadLine());
@@ -25,6 +26,7 @@ namespace Calculadora_Alonso
                 if (choice == 2) Sumar();
                 if (choice == 3) Restar();
                 if (choice == 4) Producto();
+                if (choice == 5) DeterminanteCualquierOrden(); 
                 if (choice == 0) return;
 
             }
@@ -239,6 +241,49 @@ namespace Calculadora_Alonso
                 Console.WriteLine("Para que las matrices puedan multiplicarse, la primera debe ser m x n y la segunda n x m. Introduzca una operación válida");
                 Eleccion();
             }
+        }
+
+        static double[,] ConstruirMatriz(){
+            Console.WriteLine("Introduce el tamaño de la matriz.");
+            int s = int.Parse(Console.ReadLine());
+
+            double[,] matriz = new double[s, s];
+
+            for (int i = 0; i < s; i++)
+            {
+                for (int j = 0; j < s; j++)
+                {
+                    Console.Write($"Matriz[{i},{j}]: ");
+                    matriz[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            return matriz;
+        }
+
+        static void DeterminanteCualquierOrden(){
+            double[,] matriz = ConstruirMatriz();
+
+            int n = matriz.GetLength(0);
+
+            for (int k = 0; k < n - 1; k++)
+            {
+                for (int i = k + 1; i < n; i++)
+                {
+                    double factor = matriz[i, k] / matriz[k, k];
+                    for (int j = k + 1; j < n; j++)
+                    {
+                        matriz[i, j] = matriz[i, j] - factor * matriz[k, j];
+                    }
+                }
+            }
+
+            double det = 1;
+            for (int i = 0; i < n; i++)
+            {
+                det *= matriz[i, i];
+            }
+            Console.WriteLine("El determinante de la matriz es ");
+            Console.WriteLine(det);
         }
 
         static bool CheckInt(string num){
