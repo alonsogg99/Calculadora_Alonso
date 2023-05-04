@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
+      "projectUniqueName": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Versions\\Calculadora_Alonso_01\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
       "projectName": "Calculadora_Alonso",
-      "projectPath": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
+      "projectPath": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Versions\\Calculadora_Alonso_01\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Calculadora_Alonso\\obj\\",
+      "outputPath": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Versions\\Calculadora_Alonso_01\\Calculadora_Alonso\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
