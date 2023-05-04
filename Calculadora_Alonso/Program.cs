@@ -326,135 +326,128 @@ namespace Calculadora_Alonso
             double[,] matriz = ConstruirMatriz();
 
             double det = DeterminanteGeneral(matriz);
-            if (det == 0)
-            {
+            if (det == 0){
                 Console.WriteLine("La matriz no es invertible puesto que su determinante es igual a 0, elige otra matriz válida.");
                 MatrizInversa();
             }
-            else
-            {
+            else{
+                int filas = matriz.GetLength(0);
+                int columnas = matriz.GetLength(1);
                 double[,] matrizT = MatrizTraspuesta(matriz);
                 double[,] matrizA = MatrizAdjunta(matrizT);
                 double fac = 1 / det;
                 double[,] matrizI = MatrizPorEscalar(matrizA, fac);
                 Console.WriteLine("La matriz inversa es:");
-                for (int i = 0; i < matrizI.Length; i++)
-                {
-                    for (int j = 0; j < matrizI.Length; j++)
-                    {
-                        Console.Write("{0} ", matrizI[i, j]);
+                for (int i = 0; i < filas; i++){
+                    for (int j = 0; j < columnas; j++){
+                        Console.Write(matrizI[i, j] + " ");
                     }
                     Console.WriteLine();
                 }
             }
+        }
 
-            static double[,] MatrizTraspuesta(double[,] matriz)
+        static double[,] MatrizTraspuesta(double[,] matriz)
+        {
+            int filas = matriz.GetLength(0);
+            int columnas = matriz.GetLength(1);
+            double[,] matrizT = new double[columnas, filas];
+
+            for (int i = 0; i < filas; i++)
             {
-                int filas = matriz.GetLength(0);
-                int columnas = matriz.GetLength(1);
-                double[,] matrizT = new double[columnas, filas];
-
-                for (int i = 0; i < filas; i++)
+                for (int j = 0; j < columnas; j++)
                 {
-                    for (int j = 0; j < columnas; j++)
-                    {
-                        matrizT[i, j] = matriz[j, i];
-                    }
+                    matrizT[i, j] = matriz[j, i];
                 }
-                return matrizT;
+            }
+            return matrizT;
+        }
+
+        static double[,] MatrizAdjunta(double[,] matriz)
+        {
+            int n = matriz.GetLength(0);
+            double[,] matrizAdjunta = new double[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    int signo = ((i + j) % 2 == 0) ? 1 : -1;
+                    double[,] submatriz = Submatriz(matriz, i, j);
+                    double determinante = DeterminanteGeneral(submatriz);
+                    matrizAdjunta[i, j] = signo * determinante;
+                }
             }
 
-            static double[,] MatrizAdjunta(double[,] matriz)
-            {
-                int n = matriz.GetLength(0);
-                double[,] matrizAdjunta = new double[n, n];
+            matrizAdjunta = MatrizTraspuesta(matrizAdjunta);
 
-                for (int i = 0; i < n; i++)
+            return matrizAdjunta;
+        }
+
+        static double[,] Submatriz(double[,] matriz, int fila, int columna)
+        {
+            int n = matriz.GetLength(0);
+            double[,] submatriz = new double[n - 1, n - 1];
+
+            int iSub = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (i == fila)
                 {
-                    for (int j = 0; j < n; j++)
-                    {
-                        int signo = ((i + j) % 2 == 0) ? 1 : -1;
-                        double[,] submatriz = Submatriz(matriz, i, j);
-                        double determinante = DeterminanteGeneral(submatriz);
-                        matrizAdjunta[i, j] = signo * determinante;
-                    }
+                    continue;
                 }
 
-                matrizAdjunta = MatrizTraspuesta(matrizAdjunta);
-
-                return matrizAdjunta;
+                int jSub = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (j == columna) continue;
+                    submatriz[iSub, jSub] = matriz[i, j];
+                    jSub++;
+                }
+                iSub++;
             }
 
-            static double[,] Submatriz(double[,] matriz, int fila, int columna)
+            return submatriz;
+        }
+
+        static double[,] MatrizPorEscalar(double[,] matriz, double escalar)
+        {
+            int filas = matriz.GetLength(0);
+            int columnas = matriz.GetLength(1);
+            double[,] matrizResultado = new double[filas, columnas];
+
+            for (int i = 0; i < filas; i++)
             {
-                int n = matriz.GetLength(0);
-                double[,] submatriz = new double[n - 1, n - 1];
-
-                int iSub = 0;
-                for (int i = 0; i < n; i++)
+                for (int j = 0; j < columnas; j++)
                 {
-                    if (i == fila)
-                    {
-                        continue;
-                    }
-
-                    int jSub = 0;
-                    for (int j = 0; j < n; j++)
-                    {
-                        if (j == columna)
-                        {
-                            continue;
-                        }
-
-                        submatriz[iSub, jSub] = matriz[i, j];
-                        jSub++;
-                    }
-
-                    iSub++;
+                    matrizResultado[i, j] = matriz[i, j] * escalar;
                 }
+            }
+            return matrizResultado;
+        }
 
-                return submatriz;
+        static double DeterminanteGeneral(double[,] matriz)
+        {
+            int n = matriz.GetLength(0);
+
+            for (int k = 0; k < n - 1; k++)
+            {
+                for (int i = k + 1; i < n; i++)
+                {
+                    double factor = matriz[i, k] / matriz[k, k];
+                    for (int j = k + 1; j < n; j++)
+                    {
+                        matriz[i, j] = matriz[i, j] - factor * matriz[k, j];
+                    }
+                }
             }
 
-            static double[,] MatrizPorEscalar(double[,] matriz, double escalar)
+            double det = 1;
+            for (int i = 0; i < n; i++)
             {
-                int filas = matriz.GetLength(0);
-                int columnas = matriz.GetLength(1);
-                double[,] matrizResultado = new double[filas, columnas];
-
-                for (int i = 0; i < filas; i++)
-                {
-                    for (int j = 0; j < columnas; j++)
-                    {
-                        matrizResultado[i, j] = matriz[i, j] * escalar;
-                    }
-                }
-                return matrizResultado;
+                det *= matriz[i, i];
             }
-
-            static double DeterminanteGeneral(double[,] matriz)
-            {
-                int n = matriz.GetLength(0);
-
-                for (int k = 0; k < n - 1; k++)
-                {
-                    for (int i = k + 1; i < n; i++)
-                    {
-                        double factor = matriz[i, k] / matriz[k, k];
-                        for (int j = k + 1; j < n; j++)
-                        {
-                            matriz[i, j] = matriz[i, j] - factor * matriz[k, j];
-                        }
-                    }
-                }
-
-                double det = 1;
-                for (int i = 0; i < n; i++)
-                {
-                    det *= matriz[i, i];
-                }
-                return det;
-            }
+            return det;
         }
     }
 }
