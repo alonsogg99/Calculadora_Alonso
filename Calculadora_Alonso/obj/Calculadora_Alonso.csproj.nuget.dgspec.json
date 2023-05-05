@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alumno\\Desktop\\Alonso\\Calculadora_Alonso\\Calculadora_Alonso\\Calculadora_Alonso.csproj": {}
+    "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Versions\\Calculadora_Alonso_02\\Calculadora_Alonso\\Calculadora_Alonso.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alumno\\Desktop\\Alonso\\Calculadora_Alonso\\Calculadora_Alonso\\Calculadora_Alonso.csproj": {
+    "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Versions\\Calculadora_Alonso_02\\Calculadora_Alonso\\Calculadora_Alonso.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alumno\\Desktop\\Alonso\\Calculadora_Alonso\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
+        "projectUniqueName": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Versions\\Calculadora_Alonso_02\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
         "projectName": "Calculadora_Alonso",
-        "projectPath": "C:\\Users\\Alumno\\Desktop\\Alonso\\Calculadora_Alonso\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
-        "packagesPath": "C:\\Users\\Alumno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alumno\\Desktop\\Alonso\\Calculadora_Alonso\\Calculadora_Alonso\\obj\\",
+        "projectPath": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Versions\\Calculadora_Alonso_02\\Calculadora_Alonso\\Calculadora_Alonso.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "F:\\ESNE\\SEGUNDO\\MATEMATICAS\\Calculadora_Alonso\\Versions\\Calculadora_Alonso_02\\Calculadora_Alonso\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Alumno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,7 +25,8 @@
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -57,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
